@@ -1,0 +1,129 @@
+{% extends 'userhome.html' %}
+
+ 
+            {% block banner%}
+
+            {% endblock %}
+
+             {% block choose %}
+
+             {% endblock %}
+
+             {% block productintro %}
+
+              {% endblock %}
+
+
+              {% block productlist %}
+
+              {% block map %}
+
+               {% endblock %}
+
+
+              {% endblock %}
+
+              {% block content %}
+             
+
+   <div class="whyschose">
+      <div class="container">
+
+         <div class="row">
+            <div class="col-md-7 offset-md-3">
+               <div class="title">
+                {% if bstatus %}
+                  
+                <center><h1 style="font-size:30px; font-weight:bold; color:#ffc221;"> Bid For Deals Here !!!  </h1></center><hr><hr>
+
+
+                <form  method="post" action="/users/bidproduct/">
+      <!--csrf token for accepting request -->
+      {% csrf_token %}
+      <table  class="table table-bordered" >
+        
+    		<tr>
+    			<td><b> Product Id</b> </td>
+    			<td>
+    				<input  name="pid" type="text"  value="{{pDetails.pid}}" class="form-control"  readonly/>
+                <input  name="uid" type="hidden"  value="{{sunm}}"   />
+    			</td>
+    			
+            </tr>
+
+
+    		
+
+
+    		<tr>
+    			<td><b> Base Price</b></td>
+    			<td>
+    				<input name="bprice" type="text"  value="{{pDetails.bprice}}"   class="form-control" readonly />
+    			</td>
+    			
+            </tr>
+
+            
+    		<tr>
+    			<td><b> Current Bidding Price</b></td>
+    			<td>
+    				<input name="cbprice" type="text"  value="{{cbprice}}"   class="form-control" readonly />
+    			</td>
+    			
+            </tr>
+
+            <tr>
+    			<td><b> Your Bidding Price</b></td>
+    			<td>
+    				<input name="bidprice" type="text"  value=""   class="form-control" placeholder="Enter your Bid Price" />
+    			</td>
+    			
+            </tr>
+           
+            
+
+
+    		<tr>	
+         	<td colspan="2">
+               	
+    			 		<input type="submit" value="Bid Product">
+    			 	</td>
+    		</tr>    			 	
+
+       
+    </table>
+   </form>
+
+                {% else %}
+                <h1 style="font-size:30px; font-weight:bold; color:#ffc221;"> Bidding Completed </h1>
+                <a style ="color:Blue" href="/users/bidresult/?pid={{pDetails.pid}}">View Bidding result </a>
+                {% endif %}
+
+               </div>
+           </div>
+         </div>
+
+        
+            
+          
+            
+            
+       
+             
+
+
+         
+        </div>
+      </div>
+   
+{% endblock %}
+
+ {% block footer%}
+            <div class="copyright">
+                <p> &copy; All Right Reserved By Scrap Auction || 2021&trade;</a></p>
+            </div>
+            </div>
+            
+         
+      
+{% endblock %}

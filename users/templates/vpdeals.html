@@ -1,0 +1,91 @@
+{% extends 'userhome.html' %}
+
+ 
+            {% block banner%}
+
+            {% endblock %}
+
+             {% block choose %}
+
+             {% endblock %}
+
+             {% block productintro %}
+
+              {% endblock %}
+
+
+              {% block productlist %}
+
+              {% block map %}
+
+               {% endblock %}
+
+
+              {% endblock %}
+
+              {% block content %}
+             
+
+   <div class="whyschose">
+      <div class="container">
+
+         <div class="row">
+            <div class="col-md-7 offset-md-3">
+               <div class="title">
+                  
+                <center><h1 style="font-size:30px; font-weight:bold; color:#ffc221;"> Auction Deals List </h1></center><hr><hr>
+
+               </div>
+           </div>
+         </div>
+         
+         {% for row in plist %}
+         
+         <table border="3" height="180px" width="100%">
+
+         <tr>
+         <td rowspan="3" width="35%">
+         <center> 
+         <img src="{{media_url}}{{row.piconnm}}" height="150"  width="200"/>  
+         </center>
+         </td>
+         <td> 
+         <b>Product Title: </b>{{row.title}}
+         </td>
+         </tr>
+
+         <tr>
+         <td>
+         <b>Product Description: </b> {{row.pdescription}}
+         </td>
+         </tr>
+
+         <tr>
+         <td> 
+         <b> Product Base Price:</b>{{row.bprice}}
+         <br>
+         <a href="/users/bidproduct/?pid={{row.pid}}" style="color:red;" > View Bidding Product</a>
+         </td>
+         </tr>
+         
+         
+         
+         
+         </table>
+         
+<br><br>
+{% endfor %}
+      </div>
+      </div>
+   
+{% endblock %}
+
+ {% block footer%}
+            <div class="copyright">
+                <p> &copy; All Right Reserved By Scrap Auction || 2021&trade;</a></p>
+            </div>
+            </div>
+            
+         
+      
+{% endblock %}

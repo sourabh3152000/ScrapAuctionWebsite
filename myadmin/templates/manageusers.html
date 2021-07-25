@@ -1,0 +1,67 @@
+{% extends 'adminhome.html' %}
+
+ {% block content %}
+ 
+ <div class="whyschose">  
+        <div class="container">
+
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+                  <div class="title">
+               <center>    <h2> VIEW AND MANAGE <strong class="black">USERS</strong></h2> </center>
+               </div>
+            </div> 
+           </div>
+            
+            
+                
+             <table class="table table-bordered" style="table-layout:auto;" >
+                         <tr>
+                             <th>RegID</th>
+                             <th>Name</th>
+                             <th>Username</th>
+                             <th>Mobile</th>
+                             <th>Address</th>
+                             <th>City</th>
+                             <th>Gender</th>
+                             <th>Info</th>
+                             <th>Status</th>
+                             <th>Action</th>
+                         </tr>
+                         {% for row in userDetails %}
+
+                         <tr>
+                             <td>{{row.regid}}</td>
+                             <td>{{row.name}}</td>
+                             <td>{{row.username}}</td>
+                             <td>{{row.mobile}}</td>
+                             <td>{{row.address}}</td>
+                             <td>{{row.city}}</td>
+                             <td>{{row.gender}}</td>
+                             <td>{{row.info}}</td>
+                             <td>
+                                {% if row.status %}
+                                 <a style="color:coral; font-weight: bold;" href="/myadmin/manageuserstatus/?s=block&regid={{row.regid}}">Block User</a>
+                                {% else %}
+                                <a style="color: green; font-weight: bold;" href="/myadmin/manageuserstatus/?s=verify&regid={{row.regid}}">Verify User</a>
+                                {% endif %}
+                            </td>
+
+                             <td>
+                                <a style="color:red; font-weight: bold;" href="/myadmin/manageuserstatus/?s=delete&regid={{row.regid}}">Delete User</a>
+
+                             </td>
+
+
+                         </tr>
+                         {% endfor %}
+                     
+                     </table>
+                 
+                  
+               
+                 
+         </div>
+      </div>
+   
+{% endblock %}

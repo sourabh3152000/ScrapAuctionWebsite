@@ -1,0 +1,120 @@
+{% extends 'adminhome.html' %}
+
+ {% block content %}
+   <style>
+               a{
+
+                   color:black;
+                   font-weight:bold;
+                   text-align:justify;
+                   
+                  
+                  
+                   
+                   
+               }
+               a:hover{
+                   color:#ffc221;
+
+               }
+                .nice-select{
+                   display:none;
+               }
+                .form-control{
+                   padding:6px 20px;
+               }
+               
+
+             
+               
+               </style>
+ 
+ <div class="whyschose">  
+        <div class="container">
+        
+        
+
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+                <a  href="/myadmin/managecategories/">ADD CATEGORY</a>&nbsp &nbsp &nbsp 
+               <a href="/myadmin/editcategories/">MANAGE CATEGORY</a>&nbsp &nbsp &nbsp 
+               <a href="/myadmin/managesubcategories/">ADD SUBCATEGORY </a>&nbsp &nbsp &nbsp 
+               <a href="/myadmin/editsubcategories/">MANAGE SUBCATEGORY </a>
+               <br><br>
+               <div class="title">
+                  <center>    <h2> ADD <strong class="black">CATEGORY</strong></h2> </center>
+
+
+                
+             
+                  </div>
+               </div>
+               
+            </div>
+            <font color="blue">{{output}}</font>
+
+           <form  method="post" action="/myadmin/managesubcategories/" enctype="multipart/form-data" >
+      <!--csrf token for accepting request -->
+      {% csrf_token %}
+      <table  class="table table-bordered" >
+        
+    		<tr>
+    			<td><b> CATEGORY NAME</b> </td>
+    			<td>
+                     
+    				<select name="catid" class="form-control" >
+                    <option> Select Category </option>
+                    {% for row in clist %}
+                    <option value="{{row.catid}}">{{row.catnm}}</option>
+                    {% endfor %}
+                    
+                    </select>
+                    
+    			</td>
+    			
+            </tr>
+            <tr>
+    			<td><b>  SUB CATEGORY NAME</b> </td>
+    			<td>
+    				<input  name="subcatnm" type="text"  placeholder=" Enter SubCategory Name" class="form-control" >
+    			</td>
+    			
+            </tr>
+
+
+
+
+    		
+
+
+    		<tr>
+    			<td><b>SUB CATEGORY ICON</b></td>
+    			<td>
+    				<input type="file" name="caticon"  class="form-control" >
+    			</td>
+    			
+            </tr>
+           
+
+
+    		<tr>	
+         	<td colspan="2">
+               	 
+    			 		<input type="submit" value="Add SubCategory">
+    			 	</td>
+    		</tr>    			 	
+
+       
+    </table>
+   </form>
+    </fieldset>
+
+            
+            
+            
+            
+            </form>
+         </div>
+      </div>
+   
+{% endblock %}

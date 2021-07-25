@@ -1,0 +1,170 @@
+{% extends 'adminhome.html' %}
+
+
+ {% block content %}
+ <script>
+ function fetchSubCategory(catid)
+ {
+     var xhttp=new XMLHttpRequest()
+     xhttp.open("GET","http://localhost:8000/myadmin/fetchSubCategory/?catid="+catid,true)
+     xhttp.send()
+
+     xhttp.onreadystatechange=function(){
+         if(xhttp.readyState==4 && xhttp.status==200)
+         {
+             document.getElementById("response").innerHTML=xhttp.responseText
+
+
+         }
+     }
+ }
+ </script>
+   <style>
+               a{
+
+                   color:black;
+                   font-weight:bold;
+                   font-size:15px;
+                   text-align:justify;
+                   
+                  
+                  
+                   
+                   
+               }
+               a:hover{
+                   color:#ffc221;
+
+               }
+
+               .nice-select{
+                   display:none;
+               }
+               
+               .form-control{
+                   padding:6px 20px;
+               }
+               </style>
+              
+ 
+ <div class="whyschose">  
+        <div class="container">
+        
+        
+
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+               <center> <a  href="/myadmin/manageproduct/">Manage Product</a>&nbsp &nbsp &nbsp &nbsp 
+               <a href="/myadmin/viewproduct/">View Product</a>&nbsp &nbsp &nbsp </center>
+              
+               <br><br><br>
+               <div class="title">
+                  <center>    <h2> ADD <strong class="black">Product</strong></h2> </center>
+
+
+                
+             
+                  </div>
+               </div>
+               
+            </div>
+            <font color="blue">{{output}}</font>
+
+           <form  method="post" action="/myadmin/manageproduct/" enctype="multipart/form-data" >
+      <!--csrf token for accepting request -->
+      {% csrf_token %}
+      <table  class="table table-bordered" >
+        
+
+            <tr>
+    			<td><b> Title</b> </td>
+    			<td>
+    				<input required id="title" name="title" type="text"  placeholder=" Enter Product Title" class="form-control" >
+    			</td>
+    			
+            </tr>
+
+    		<tr>
+    			<td><b> Category Name</b> </td>
+    			<td>
+                
+                <select name="catid" class="form-control"  onchange="fetchSubCategory(this.value)" >
+                    <option>Select Category</option>
+                    {% for row in clist %}
+                      <option value="{{row.catid}}"> {{row.catnm}} </option>
+
+                    {% endfor %}
+                    
+                    
+                </select>
+                    
+    			</td>
+    			
+            </tr>
+
+            <tr>
+    			<td><b> Sub Category Name</b> </td>
+    			<td>
+                <select id="response" name="subcatid" class="form-control" >
+                    <option> Select Sub Category </option>
+                    
+                    
+                </select>
+                
+                    
+    			</td>
+    			
+            </tr>
+            <tr>
+    			<td><b>Product Description</b> </td>
+    			<td>
+    				<textarea name="pdescription" placeholder="Enter your Product Description" class="form-control" rows="5"></textarea>
+    			</td>
+    			
+            </tr>
+
+            <tr>
+    			<td><b> Product Base Price</b> </td>
+    			<td>
+    				<input required id="bprice" name="bprice" type="text"  placeholder=" Enter Product Base Price" class="form-control" >
+    			</td>
+    			
+            </tr>
+
+
+
+
+    		
+
+
+    		<tr>
+    			<td><b>PRODUCT ICON</b></td>
+    			<td>
+    				<input type="file" name="picon"  class="form-control" >
+    			</td>
+    			
+            </tr>
+           
+
+
+    		<tr>	
+         	<td colspan="2">
+               	 
+    			 		<input type="submit" value="Add Product">
+    			 	</td>
+    		</tr>    			 	
+
+       
+    </table>
+   </form>
+    </fieldset>
+
+            
+            
+            
+            
+            </form>
+         </div>
+      </div>
+   
+{% endblock %}

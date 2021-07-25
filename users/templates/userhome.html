@@ -1,0 +1,85 @@
+{% extends 'master_template.html' %}
+
+ {% block header %}
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+	
+                     <div class="logo"><a href=""><span style="font-size:30px; color:#ffc221; "><font>Scrap</font><font> Auction</font></span></a> </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-7 col-lg-7 col-md-9 col-sm-9">
+                  <div class="menu-area">
+                     <div class="limit-box">
+                        <nav class="main-menu">
+                           <ul class="menu-area-main">
+                              <li class="active"> <a href="/users/"> User Home</a> </li>
+                              <li class="active"> <a href="/users/vdeals/"> View Deals</a> </li>
+                              
+                              
+                              <li> <a href="/login/">Logout</a> </li>
+                              
+                               
+                           </ul>
+                        </nav>
+                       
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                  
+               </div>
+               
+            </div>
+             <b><font color="darkgreen">WELCOME USER : {{sunm}}</font></b>
+           
+            {% endblock %}
+
+            {% block banner%}
+
+            {% endblock %}
+
+             {% block choose %}
+
+             {% endblock %}
+
+             {% block productintro %}
+
+              {% endblock %}
+
+
+              {% block productlist %}
+
+              {% block map %}
+
+               {% endblock %}
+
+
+              {% endblock %}
+
+              {% block content %}
+
+              <div class="whyschose">
+         <div class="container">
+
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+                  <div class="title">
+                  <center>  <h2>  USER <strong class="black"> PANEL</strong></h2></center> 
+                <center>  <h3>Welcome To User Panel Of Scrap Auction</h3></center><hr><hr>
+                     <span><center><!--write your content here--></center></span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}
+
+ {% block footer%}
+                                 <div class="copyright">
+                <p> &copy; All Right Reserved By Scrap Auction || 2021&trade;</a></p>
+            </div>
+         
+      </div>
+      {% endblock %}

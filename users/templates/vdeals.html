@@ -1,0 +1,91 @@
+{% extends 'userhome.html' %}
+
+ 
+            {% block banner%}
+
+            {% endblock %}
+
+             {% block choose %}
+
+             {% endblock %}
+
+             {% block productintro %}
+
+              {% endblock %}
+
+
+              {% block productlist %}
+
+              {% block map %}
+
+               {% endblock %}
+
+
+              {% endblock %}
+
+              {% block content %}
+              <style>
+              #category_main{
+
+                  height:400px;
+                  width:900px;
+                  
+              }
+
+               .category_part{
+
+                  height:200px;
+                  width:300px;
+                  float:left;
+                  
+              }
+              a:hover{
+                 color:#ffc221;
+              }
+              </style>
+
+              <div class="whyschose">
+         <div class="container">
+
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+                  <div class="title">
+                  
+                <center><h1 style="font-size:30px; font-weight:bold; color:#ffc221;">Categories To Search Auction Deals</h1></center><hr><hr>
+
+               </div>
+            </div>
+         </div>
+                
+
+                <center><div id="category_main">
+                {% for row in clist %}
+                <a href="/users/vscdeals/?catid={{row.catid}}">
+
+                 <div class="category_part">
+                  
+                 <img src="{{media_url}}{{row.caticonnm}}"  height="100" width="150"/>
+                 <br>
+                 <b>{{row.catnm}}</b>
+
+                   </div>
+                    
+                 </a>
+                 {% endfor  %}
+                
+                 
+                
+                </div></center>
+               
+          </div>
+      </div>
+{% endblock %}
+
+ {% block footer%}
+                                 <div class="copyright">
+                <p> &copy; All Right Reserved By Scrap Auction || 2021&trade;</a></p>
+            </div>
+            
+         
+      
+{% endblock %}

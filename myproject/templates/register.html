@@ -1,0 +1,162 @@
+{% extends 'master_template.html' %}
+
+{%block content %}
+
+<script>
+ function checkEmail(emailid)
+ {   
+   
+     
+
+     var xhttp=new XMLHttpRequest()
+     xhttp.open("GET","http://localhost:8000/checkEmail/?emailid="+emailid,true)
+     xhttp.send()
+
+     xhttp.onreadystatechange=function(){
+         if(xhttp.readyState==4 && xhttp.status==200)
+         {   
+            var msg
+
+            if(parseInt(xhttp.responseText))
+               
+               msg="<font color='red'>Email-Id Already Exist,Please Enter another Email-Id</font>"
+
+            else
+               msg="<font color='green'>Email-Id Available</font>"
+
+
+            document.getElementById("response").innerHTML=msg
+
+
+         }
+     }
+ }
+ </script>
+
+
+
+
+
+
+<div class="whyschose">
+         <div class="container">
+
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+                  <div class="title">
+                  <center>  <h2>  REGISTER <strong class="black"> PAGE</strong></h2></center> 
+                     <span><center><!--write your content here--></center></span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-12">
+         <br>
+<fieldset>
+
+   <h1 style="font-weight: bold;font-size: 30px;"> Register Here!!!! </h1>
+   <font color="blue">{{output}}</font>
+
+    <form  method="post" action="/register/">
+      <!--csrf token for accepting request -->
+      {% csrf_token %}
+      <table  class="table table-bordered" >
+         <tr>
+            <td> <b>Name</b> </td>
+            <td>
+               <input required id="name" name="name" type="text"  placeholder=" Enter Your Name" class="form-control" >
+            </td>
+            
+           </tr>
+    		<tr>
+    			<td><b> Username</b> </td>
+    			<td>
+    				<input onkeyup="checkEmail(this.value)" required id="username" name="username" type="email"  placeholder=" Enter your Username" class="form-control" >
+                <span id="response"></span>
+
+    			</td>
+    			
+            </tr>
+
+
+    		
+
+
+    		<tr>
+    			<td><b> Password</b></td>
+    			<td>
+    				<input required  id="password" name="password" type="password"  placeholder=" Enter your Password"  class="form-control" >
+    			</td>
+    			
+            </tr>
+
+
+    		<tr>
+    			<td><b> Mobile</b></td>
+    			<td>
+    				<input required id="mobile" name="mobile" type="text" placeholder=" Enter your Contact" class="form-control" >
+    			</td>
+    			
+            </tr>
+
+            <tr>
+    			<td><b> Address</b></td>
+    			<td>
+    				<textarea  required id="address" type="text" name="address" placeholder=" Enter your Address"  rows="6" class="form-control"  ></textarea>
+    			</td>
+    			
+            </tr>
+            <tr>
+               <td> <b> City</b></td>
+               <td>
+                  <input required id="city" name="city" type="text" placeholder=" Enter your City" class="form-control" >
+                  
+               </td>
+            </tr>
+           
+               
+  
+            
+
+            
+    			
+            </tr>
+           
+
+
+
+           
+
+
+            <tr>
+    			<td> <b>Select Gender</b></td>
+    			<td>
+    				<input checked id="male" name="gender" value="male" type="radio"  >
+    				<label  for="male">Male</label>
+    				<input type="radio" name="gender" value="female" id="female">
+    				<label  for="female">Female
+
+                </label>
+
+    			</td>
+    			
+            </tr>
+
+
+
+            
+    			 <tr>	
+         	<td>
+               	<button> <b>SUBMIT</b> </button> 
+    			 		<input type="reset" value="Reset">
+    			 	</td>
+    			 </tr>    			 	
+
+       </tr>
+    </table>
+   </form>
+    </fieldset>
+    
+
+ {% endblock %}

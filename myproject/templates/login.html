@@ -1,0 +1,67 @@
+{% extends 'master_template.html' %}
+
+{%block content %}
+<div class="whyschose">
+         <div class="container">
+
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+                  <div class="title">
+                  <center>  <h2>  LOGIN <strong class="black"> PAGE</strong></h2></center> 
+
+                   <br>
+<fieldset>
+
+   <h1 style="font-weight: bold;font-size: 30px;"> Login Here!!!! </h1>
+   <font color="blue">{{output}}</font>
+
+    <form  method="post" action="/login/">
+      <!--csrf token for accepting request -->
+      {% csrf_token %}
+      <table  class="table table-bordered" >
+        
+    		<tr>
+    			<td><b> Username</b> </td>
+    			<td>
+    				<input required id="username" name="username" type="email"  placeholder=" Enter your Username" class="form-control" >
+    			</td>
+    			
+            </tr>
+
+
+    		
+
+
+    		<tr>
+    			<td><b> Password</b></td>
+    			<td>
+    				<input required  id="password" name="password" type="password"  placeholder=" Enter your Password"  class="form-control" >
+    			</td>
+    			
+            </tr>
+            <tr>
+               <td colspan="2"><input type="checkbox" value="remember" name="chk" />Remember Me ?</td>
+            </tr>
+            
+
+
+    		<tr>	
+         	<td colspan="2">
+               	<button> <b>SUBMIT</b> </button> 
+    			 		<input type="reset" value="Reset">
+    			 	</td>
+    		</tr>    			 	
+
+       
+    </table>
+   </form>
+    </fieldset>
+    
+
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+ {% endblock %}
